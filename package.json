@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev-offline": "set OFFLINE_MODE=true & next dev"
   },
   "dependencies": {
     "axios": "^0.21.1",
