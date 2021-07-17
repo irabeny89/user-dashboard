@@ -32,7 +32,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
   const [profile, setProfile] = useState<UserType>();
   const [selection, setSelection] = useState(ALL_USERS);
   const [page, setPage] = useState(1);
-  const [] = useState(false);
+  const [applyFade, setApplyFade] = useState(false);
 
   const paginate: MouseEventHandler<HTMLButtonElement> = async ({
     currentTarget: { textContent },

@@ -47,7 +47,7 @@ const User = ({
           <MdContactPhone /> {cell}
         </p>
       </Col>
-      <Col sm="2" className="text-center">
+      <Col sm="2" className="text-center mt-3">
         <Button variant="outline-light" onClick={() => renderProfile(uuid)}>
           <MdForward />
         </Button>

@@ -24,7 +24,7 @@ export const fakeAPIResponse = {
       },
       email: "tiger.gibson@example.com",
       login: {
-        uuid: "155e77ee-ba6d-486f-95ce-0e0c0fb4b919",
+        uuid: "155uuide-ba6d-486f-95ce-0e0c0fb4b919",
         username: "silverswan131",
         password: "firewall",
         salt: "TQA1Gz7x",

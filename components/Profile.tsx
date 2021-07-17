@@ -1,11 +1,10 @@
-import Fade from "react-bootstrap/Fade";
 import Image from "next/image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FaArrowLeft } from "react-icons/fa";
 import { UserType } from "../interfaces";
-import { Container, Table } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { capitalize } from "../utils";
 
 type ProfileProps = {
@@ -15,16 +14,19 @@ type ProfileProps = {
 
 const Profile = ({ profile, backToList }: ProfileProps) =>
   !profile ? (
-    <div>
-      <Button onClick={backToList}>
+    <div id="feedback">
+      <Button
+        onClick={backToList}
+      >
         <FaArrowLeft /> Go back
       </Button>
       No data.{" "}
     </div>
   ) : (
-    <Fade in={true}>
       <div className="bg-dark text-white rounded">
-        <Button onClick={backToList}>
+        <Button
+          onClick={backToList}
+        >
           <FaArrowLeft color="white" /> Go back
         </Button>
         <div className="text-center my-5 rounded-circle">
@@ -69,11 +71,13 @@ const Profile = ({ profile, backToList }: ProfileProps) =>
             </Col>
           </Row>
         </Container>
-        <Button onClick={backToList} className="mt-4">
+        <Button
+          onClick={backToList}
+          className="mt-4"
+        >
           <FaArrowLeft /> Go back
         </Button>
       </div>
-    </Fade>
   );
 
 export default Profile;
