@@ -18,4 +18,4 @@ Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&ut
 ## Notes
 
 This app is using [PNPM](https://pnpm.io/) as a package manager.
-You can use NPM or Yarn if you prefer; just delete the `node_modules/` folder and the `package.lock` or `yarn.lock` file.
+You can use NPM or Yarn if you prefer; just delete the `node_modules/` folder and the `package.lock` or `yarn.lock` file. Then run `pnpm install` to install all the dependencies in the package.json file.
