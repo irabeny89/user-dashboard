@@ -7,6 +7,8 @@ The app makes use of user data from [randomuser.me](https://randomuser.me) API a
 
 Preview the app live on [https://dashboard-navy-ten.vercel.app/](https://dashboard-navy-ten.vercel.app/)
 
+Repository: [https://github.com/irabeny89/user-dashboard](https://github.com/irabeny89/user-dashboard)
+
 ## How to use it?
 
 Clone the repo and run `pnpm dev` to start the development server.

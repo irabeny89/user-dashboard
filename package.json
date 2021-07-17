@@ -2,6 +2,7 @@
   "name": "next-ts-dashboard",
   "version": "0.1.0",
   "private": true,
+  "repository": "https://github.com/irabeny89/user-dashboard",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
