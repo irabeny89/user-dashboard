@@ -48,7 +48,7 @@ export const fakeAPIResponse = {
         value: "0390511T",
       },
       picture: {
-        large: "https://randomuser.me/api/portraits/men/75.jpg",
+        large: "/Ernest Cartoon.jpg",
         medium: "/Ernest Cartoon.jpg",
         thumbnail: "/Ernest Cartoon.jpg",
       },
@@ -101,7 +101,7 @@ export const fakeAPIResponse = {
         value: "1190511T",
       },
       picture: {
-        large: "https://randomuser.me/api/portraits/men/75.jpg",
+        large: "/Ernest Cartoon.jpg",
         medium: "/Ernest Cartoon.jpg",
         thumbnail: "/Ernest Cartoon.jpg",
       },
