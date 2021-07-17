@@ -9,18 +9,18 @@ type MenuProps = {
   searchTerm: string;
   sortUsers: MouseEventHandler<HTMLDivElement>;
   handleSearchInputChange: ChangeEventHandler<HTMLInputElement>;
-  handleSubmit: FormEventHandler<HTMLFormElement>
+  handleSubmit: FormEventHandler<HTMLFormElement>;
 };
 
 const usersButtonStyle: CSSProperties = {
-  backgroundColor: "#f935a9",
+  backgroundColor: "#7946c1",
 };
 const maleUsersButtonStyle: CSSProperties = {
-  backgroundColor: "#7946c1",
+  backgroundColor: "#30bbb5",
   margin: "0 1rem",
 };
 const femaleUsersButtonStyle: CSSProperties = {
-  backgroundColor: "#30bbb5",
+  backgroundColor: "#f935a9",
 };
 
 const Menu = ({
@@ -44,7 +44,7 @@ const Menu = ({
         </InputGroup.Prepend>
         <Form.Control
           autoFocus
-          placeholder="Find a user"
+          placeholder="Filter through list"
           name="searchTerm"
           value={searchTerm}
           onChange={handleSearchInputChange}
@@ -54,7 +54,10 @@ const Menu = ({
 
     <h2>Show Users</h2>
     <br />
-    <div className="d-flex justify-content-center text-center">
+    <div
+      aria-describedby="Menu options"
+      className="d-flex justify-content-center text-center"
+    >
       <div onClick={sortUsers}>
         <Button style={usersButtonStyle}>
           <FaUsers size="65" />
