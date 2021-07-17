@@ -28,40 +28,39 @@ const OutputPanel = ({
   backToList,
   paginate,
 }: OutputPanelProps) => (
-  <Container fluid aria-describedby="List of users">
-    {users.length && (
-      <Container className="bg-white p-3 rounded">
-        <h2>{!showProfile && selection}</h2>
-        {showProfile ? (
-          <Profile
-            profile={profile}
-            backToList={backToList}
-          />
-        ) : (
-          <Users users={users} renderProfile={renderProfile} />
-        )}
-        <Row className="mt-5">
-          <Col>
-            <Button
-              variant="outline-dark"
-              as="a"
-              href={`${getJSONLink(selection)}`}
-            >
-              <FaFileDownload /> See JSON results
-            </Button>
-          </Col>
-          <Col className="text-center">
-            <Button variant="outline-dark" onClick={paginate}>
-              <FaLessThan /> Prev
-            </Button>{" "}
-            <Button variant="outline-primary" onClick={paginate}>
-              <FaGreaterThan /> Next
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-    )}
-  </Container>
+  <div>
+    <Container fluid aria-describedby="List of users">
+      {users.length && (
+        <Container fluid className="bg-white p-3 rounded">
+          <h2>{!showProfile && selection}</h2>
+          {showProfile ? (
+            <Profile profile={profile} backToList={backToList} />
+          ) : (
+            <Users users={users} renderProfile={renderProfile} />
+          )}
+          <Row className="mt-5">
+            <Col>
+              <Button
+                variant="outline-dark"
+                as="a"
+                href={`${getJSONLink(selection)}`}
+              >
+                <FaFileDownload /> See JSON results
+              </Button>
+            </Col>
+            <Col className="text-center">
+              <Button variant="outline-dark" onClick={paginate}>
+                <FaLessThan /> Prev
+              </Button>{" "}
+              <Button variant="outline-primary" onClick={paginate}>
+                <FaGreaterThan /> Next
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+      )}
+    </Container>
+  </div>
 );
 
 export default OutputPanel;

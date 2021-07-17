@@ -1,5 +1,6 @@
 import User from "./User";
 import type { UserType } from "../interfaces";
+import { Container } from "react-bootstrap";
 
 type UsersProps = { users: UserType[]; renderProfile: (id: string) => void };
 

@@ -33,7 +33,7 @@ const User = ({
           alt="image"
         />
       </Col>
-      <Col sm="7">
+      <Col sm="6" className="offset-1">
         <h4>
           {capitalize(first)} {capitalize(last)}
         </h4>
