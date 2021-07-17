@@ -28,7 +28,7 @@ const Profile = ({ profile, backToList }: ProfileProps) =>
       <div className="text-center my-5 rounded-circle">
         <Image
           className="rounded-circle"
-          src={`${profile.picture?.medium || "/vercel.svg"}`}
+          src={`${profile.picture?.large || "/vercel.svg"}`}
           width="200"
           height="200"
           alt="image"
