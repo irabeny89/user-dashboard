@@ -11,7 +11,7 @@ type UserProps = { renderProfile: (id: string) => void } & UserType;
 
 const User = ({
   renderProfile,
-  picture: { thumbnail },
+  picture: { medium },
   name: { first, last },
   location: {
     street: { name, number },
@@ -24,10 +24,10 @@ const User = ({
 }: UserProps) => (
   <Card className="my-4 bg-info rounded text-white px-3">
     <Row className="align-items-center rounded my-2 bg-dark p-3">
-      <Col sm="3" className="bg-danger rounded-circle text-center pt-1 mb-3">
+      <Col sm="3" className="rounded-circle text-center pt-1 mb-3">
         <Image
           className="rounded-circle"
-          src={`${thumbnail || "/Ernest Cartoon.jpg"}`}
+          src={`${medium || "/Ernest Cartoon.jpg"}`}
           width="90"
           height="90"
           alt="image"
