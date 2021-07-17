@@ -28,10 +28,10 @@ const OutputPanel = ({
   backToList,
   paginate,
 }: OutputPanelProps) => (
-  <div>
+  <div className="text-white">
     <Container fluid aria-describedby="List of users">
       {users.length && (
-        <Container fluid className="bg-white p-3 rounded">
+        <Container fluid className="p-3 rounded">
           <h2>{!showProfile && selection}</h2>
           {showProfile ? (
             <Profile profile={profile} backToList={backToList} />
@@ -41,18 +41,18 @@ const OutputPanel = ({
           {!showProfile && <Row className="mt-5">
             <Col>
               <Button
-                variant="outline-dark"
+                variant="outline-light"
                 as="a"
                 href={`${getJSONLink(selection)}`}
               >
                 <FaFileDownload /> See JSON results
               </Button>
             </Col>
-            <Col className="text-center">
-              <Button variant="outline-dark" onClick={paginate}>
+            <Col xs="auto">
+              <Button variant="outline-light" onClick={paginate}>
                 <FaLessThan /> Prev
               </Button>{" "}
-              <Button variant="outline-primary" onClick={paginate}>
+              <Button variant="outline-light" onClick={paginate}>
                 <FaGreaterThan /> Next
               </Button>
             </Col>

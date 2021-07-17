@@ -32,7 +32,6 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
   const [profile, setProfile] = useState<UserType>();
   const [selection, setSelection] = useState(ALL_USERS);
   const [page, setPage] = useState(1);
-  const [applyFade, setApplyFade] = useState(false);
 
   const paginate: MouseEventHandler<HTMLButtonElement> = async ({
     currentTarget: { textContent },
@@ -99,8 +98,8 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
     setSearchTerm(value);
     const filter = usersData.filter(
       ({ name: { first, last } }) =>
-        first.includes(searchTerm.toLowerCase()) ||
-        last.includes(searchTerm.toLowerCase())
+        first == value.toLowerCase() ||
+        last == value.toLowerCase()
     );
     filter.length && setUsersData(filter);
     !value && setUsersData(results);
@@ -125,6 +124,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
       </Head>
       <Layout>
         <Menu
+        showProfile={showProfile}
           searchTerm={searchTerm}
           handleSubmit={handleSubmit}
           sortUsers={sortUsers}
