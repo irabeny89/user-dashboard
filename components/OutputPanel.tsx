@@ -38,7 +38,7 @@ const OutputPanel = ({
           ) : (
             <Users users={users} renderProfile={renderProfile} />
           )}
-          <Row className="mt-5">
+          {!showProfile && <Row className="mt-5">
             <Col>
               <Button
                 variant="outline-dark"
@@ -56,7 +56,7 @@ const OutputPanel = ({
                 <FaGreaterThan /> Next
               </Button>
             </Col>
-          </Row>
+          </Row>}
         </Container>
       )}
     </Container>
