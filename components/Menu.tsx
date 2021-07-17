@@ -7,6 +7,7 @@ import { CSSProperties } from "react";
 
 type MenuProps = {
   searchTerm: string;
+  showProfile: boolean;
   sortUsers: MouseEventHandler<HTMLDivElement>;
   handleSearchInputChange: ChangeEventHandler<HTMLInputElement>;
   handleSubmit: FormEventHandler<HTMLFormElement>;
@@ -28,6 +29,7 @@ const Menu = ({
   sortUsers,
   handleSubmit,
   searchTerm,
+  showProfile,
 }: MenuProps) => (
   <div className="text-white mx-5 mb-3">
     <p style={{ fontSize: "xx-large" }}>
@@ -43,6 +45,7 @@ const Menu = ({
           </InputGroup.Text>
         </InputGroup.Prepend>
         <Form.Control
+          disabled={showProfile}
           autoFocus
           placeholder="Filter through list"
           name="searchTerm"
@@ -51,7 +54,6 @@ const Menu = ({
         />
       </InputGroup>
     </Form>
-
     <h2>Show Users</h2>
     <br />
     <div
@@ -59,19 +61,19 @@ const Menu = ({
       className="d-flex justify-content-center text-center"
     >
       <div onClick={sortUsers}>
-        <Button style={usersButtonStyle}>
+        <Button disabled={showProfile} style={usersButtonStyle}>
           <FaUsers size="65" />
         </Button>
         <p>All Users</p>
       </div>
       <div onClick={sortUsers}>
-        <Button style={maleUsersButtonStyle}>
+        <Button disabled={showProfile} style={maleUsersButtonStyle}>
           <FaMale size="65" />
         </Button>
         <p>Male Users</p>
       </div>
       <div onClick={sortUsers}>
-        <Button style={femaleUsersButtonStyle}>
+        <Button disabled={showProfile} style={femaleUsersButtonStyle}>
           <FaFemale size="65" />
         </Button>
         <p>Female Users</p>
