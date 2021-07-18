@@ -97,9 +97,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
   }) => {
     setSearchTerm(value);
     const filter = usersData.filter(
-      ({ name: { first, last } }) =>
-        first == value.toLowerCase() ||
-        last == value.toLowerCase()
+      ({ name: { first, last } }) => first.toLowerCase() == value.toLowerCase() || last.toLowerCase() == value.toLowerCase()
     );
     filter.length && setUsersData(filter);
     !value && setUsersData(results);
