@@ -97,7 +97,9 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
   }) => {
     setSearchTerm(value);
     const filter = usersData.filter(
-      ({ name: { first, last } }) => first.toLowerCase() == value.toLowerCase() || last.toLowerCase() == value.toLowerCase()
+      ({ name: { first, last } }) =>
+        first.toLowerCase() == value.toLowerCase() ||
+        last.toLowerCase() == value.toLowerCase()
     );
     filter.length && setUsersData(filter);
     !value && setUsersData(results);
@@ -122,7 +124,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
       </Head>
       <Layout>
         <Menu
-        showProfile={showProfile}
+          showProfile={showProfile}
           searchTerm={searchTerm}
           handleSubmit={handleSubmit}
           sortUsers={sortUsers}
