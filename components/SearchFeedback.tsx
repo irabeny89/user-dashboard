@@ -28,7 +28,7 @@ const SearchFeedback = ({ latestUsers }: SearchFeedbackProps) => {
     backgroundColor: FEMALE_USERS_ICON_BG_COLOR,
   };
   return (
-    <div className="mb-3 text-center">
+    <div className="mb-3">
       Found: <Badge style={allUsersStyle}>{allUsersNumber}</Badge> | Male:{" "}
       <Badge style={maleUsersStyle}>{maleUsersNumber}</Badge> | Female:{" "}
       <Badge style={femaleUsersStyle}>{femaleUsersNumber}</Badge>
