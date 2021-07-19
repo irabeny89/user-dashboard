@@ -8,5 +8,8 @@ export const constantVariable = {
   MAX_RESULTS: maxResults,
   DEFAULT_QUERY: `/?results=${maxResults}&seed=foo`,
   // json, pjson, csv, yaml, xml
-  DOWNLOAD_FORMAT: "json"
+  DOWNLOAD_FORMAT: "json",
+  ALL_USERS_ICON_BG_COLOR: "#7946c1",
+  MALE_USERS_ICON_BG_COLOR: "#30bbb5",
+  FEMALE_USERS_ICON_BG_COLOR: "#f935a9"
 };
