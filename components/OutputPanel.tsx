@@ -14,6 +14,7 @@ type OutputPanelProps = {
   users: UserType[];
   showProfile: boolean;
   profile: UserType | undefined;
+  page: number;
   renderProfile: (id: string) => void;
   backToList: () => void;
   paginate: MouseEventHandler<HTMLButtonElement>;
@@ -24,6 +25,7 @@ const OutputPanel = ({
   showProfile,
   profile,
   selection,
+  page,
   renderProfile,
   backToList,
   paginate,
@@ -38,25 +40,27 @@ const OutputPanel = ({
           ) : (
             <Users users={users} renderProfile={renderProfile} />
           )}
-          {!showProfile && <Row className="mt-5">
-            <Col>
-              <Button
-                variant="outline-light"
-                as="a"
-                href={`${getJSONLink(selection)}`}
-              >
-                <FaFileDownload /> See JSON results
-              </Button>
-            </Col>
-            <Col xs="auto">
-              <Button variant="outline-light" onClick={paginate}>
-                <FaLessThan /> Prev
-              </Button>{" "}
-              <Button variant="outline-light" onClick={paginate}>
-                <FaGreaterThan /> Next
-              </Button>
-            </Col>
-          </Row>}
+          {!showProfile && (
+            <Row className="mt-5">
+              <Col>
+                <Button
+                  variant="outline-light"
+                  as="a"
+                  href={`${getJSONLink(selection, page)}`}
+                >
+                  <FaFileDownload /> See JSON results
+                </Button>
+              </Col>
+              <Col xs="auto">
+                <Button variant="outline-light" onClick={paginate}>
+                  <FaLessThan /> Prev
+                </Button>{" "}
+                <Button variant="outline-light" onClick={paginate}>
+                  <FaGreaterThan /> Next
+                </Button>
+              </Col>
+            </Row>
+          )}
         </Container>
       )}
     </Container>
