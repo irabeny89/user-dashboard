@@ -15,6 +15,7 @@ type OutputPanelProps = {
   showProfile: boolean;
   profile: UserType | undefined;
   page: number;
+  hasUsers: boolean;
   renderProfile: (id: string) => void;
   backToList: () => void;
   paginate: MouseEventHandler<HTMLButtonElement>;
@@ -26,6 +27,7 @@ const OutputPanel = ({
   profile,
   selection,
   page,
+  hasUsers,
   renderProfile,
   backToList,
   paginate,
@@ -38,7 +40,13 @@ const OutputPanel = ({
           {showProfile ? (
             <Profile profile={profile} backToList={backToList} />
           ) : (
-            <Users users={users} renderProfile={renderProfile} />
+            <div>
+              {hasUsers ? (
+                <Users users={users} renderProfile={renderProfile} />
+              ) : (
+                <div className="text-center">User Not Found</div>
+              )}
+            </div>
           )}
           {!showProfile && (
             <Row className="mt-5">

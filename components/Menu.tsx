@@ -12,6 +12,7 @@ type MenuProps = {
   searchTerm: string;
   showProfile: boolean;
   latestUsers: UserType[];
+  hasUsers: boolean;
   sortUsers: MouseEventHandler<HTMLDivElement>;
   handleSearchInputChange: ChangeEventHandler<HTMLInputElement>;
   handleSubmit: FormEventHandler<HTMLFormElement>;
@@ -40,7 +41,8 @@ const Menu = ({
   handleSubmit,
   searchTerm,
   showProfile,
-  latestUsers
+  latestUsers,
+  hasUsers
 }: MenuProps) => (
   <div className="text-white mx-5 mb-3">
     <p style={{ fontSize: "xx-large" }}>
@@ -64,7 +66,9 @@ const Menu = ({
         />
       </InputGroup>
     </Form>
-    <SearchFeedback latestUsers={latestUsers} />
+    <div>
+      {hasUsers && <SearchFeedback latestUsers={latestUsers} />}
+    </div>
     <h2>Show Users</h2>
     <br />
     <div
@@ -90,6 +94,7 @@ const Menu = ({
         <p>Female Users</p>
       </div>
     </div>
+    <hr />
   </div>
 );
 

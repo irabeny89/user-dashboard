@@ -33,6 +33,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
   const [profile, setProfile] = useState<UserType>();
   const [selection, setSelection] = useState(ALL_USERS);
   const [page, setPage] = useState(1);
+  const [hasUsers, setHasUsers] = useState(true);
   const latestUsersDataRef = useRef(results);
 
   const paginate: MouseEventHandler<HTMLButtonElement> = async ({
@@ -74,8 +75,12 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
     currentTarget: { lastChild },
   }) => {
     const selected = lastChild?.textContent!;
-    const maleUsers = latestUsersDataRef.current.filter(({ gender }) => gender === "male");
-    const femaleUsers = latestUsersDataRef.current.filter(({ gender }) => gender === "female");
+    const maleUsers = latestUsersDataRef.current.filter(
+      ({ gender }) => gender === "male"
+    );
+    const femaleUsers = latestUsersDataRef.current.filter(
+      ({ gender }) => gender === "female"
+    );
     switch (selected) {
       case FEMALE_USERS:
         setSelection(selected);
@@ -105,8 +110,17 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
         first.toLowerCase() == value.toLowerCase() ||
         last.toLowerCase() == value.toLowerCase()
     );
-    filter.length && setUsersData(filter);
-    !value && setUsersData(latestUsersDataRef.current);
+    if (!filter.length) {
+      setHasUsers(false)
+    }
+    if (filter.length) {
+      setUsersData(filter);
+      setHasUsers(true)
+    }
+    if (!value) {
+      setUsersData(latestUsersDataRef.current);
+      setHasUsers(true)
+    }
   };
 
   const renderProfile = (id: string) => {
@@ -128,6 +142,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
       </Head>
       <Layout>
         <Menu
+          hasUsers={hasUsers}
           latestUsers={usersData}
           showProfile={showProfile}
           searchTerm={searchTerm}
@@ -136,6 +151,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
           handleSearchInputChange={handleSearchInputChange}
         />
         <OutputPanel
+          hasUsers={hasUsers}
           page={page}
           selection={selection}
           users={usersData}
