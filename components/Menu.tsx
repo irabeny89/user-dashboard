@@ -1,27 +1,37 @@
-import { ChangeEventHandler, MouseEventHandler, FormEventHandler } from "react";
+import { ChangeEventHandler, MouseEventHandler, FormEventHandler, MutableRefObject } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import { FaFemale, FaMale, FaSearch, FaUsers } from "react-icons/fa";
 import { Button } from "react-bootstrap";
 import { CSSProperties } from "react";
+import { constantVariable } from "../config";
+import SearchFeedback from "./SearchFeedback";
+import type { UserType } from "../interfaces";
 
 type MenuProps = {
   searchTerm: string;
   showProfile: boolean;
+  latestUsers: MutableRefObject<UserType[]>;
   sortUsers: MouseEventHandler<HTMLDivElement>;
   handleSearchInputChange: ChangeEventHandler<HTMLInputElement>;
   handleSubmit: FormEventHandler<HTMLFormElement>;
 };
 
+const {
+  ALL_USERS_ICON_BG_COLOR,
+  FEMALE_USERS_ICON_BG_COLOR,
+  MALE_USERS_ICON_BG_COLOR,
+} = constantVariable;
+
 const usersButtonStyle: CSSProperties = {
-  backgroundColor: "#7946c1",
+  backgroundColor: ALL_USERS_ICON_BG_COLOR,
 };
 const maleUsersButtonStyle: CSSProperties = {
-  backgroundColor: "#30bbb5",
+  backgroundColor: MALE_USERS_ICON_BG_COLOR,
   margin: "0 1rem",
 };
 const femaleUsersButtonStyle: CSSProperties = {
-  backgroundColor: "#f935a9",
+  backgroundColor: FEMALE_USERS_ICON_BG_COLOR,
 };
 
 const Menu = ({
@@ -30,13 +40,13 @@ const Menu = ({
   handleSubmit,
   searchTerm,
   showProfile,
+  latestUsers
 }: MenuProps) => (
   <div className="text-white mx-5 mb-3">
     <p style={{ fontSize: "xx-large" }}>
       Hello, <span style={{ fontWeight: "bolder" }}>Admin</span>
     </p>
     <p>Welcome to your dashboard, kindly sort through the user base.</p>
-
     <Form className="my-5" onSubmit={handleSubmit}>
       <InputGroup>
         <InputGroup.Prepend>
@@ -47,13 +57,14 @@ const Menu = ({
         <Form.Control
           disabled={showProfile}
           autoFocus
-          placeholder="Filter through list"
+          placeholder="Find user"
           name="searchTerm"
           value={searchTerm}
           onChange={handleSearchInputChange}
         />
       </InputGroup>
     </Form>
+    <SearchFeedback latestUsers={latestUsers} />
     <h2>Show Users</h2>
     <br />
     <div
