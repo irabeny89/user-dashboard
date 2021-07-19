@@ -32,7 +32,7 @@ const SearchFeedback = ({ latestUsers }: SearchFeedbackProps) => {
       Found: <Badge style={allUsersStyle}>{allUsersNumber}</Badge> | Male:{" "}
       <Badge style={maleUsersStyle}>{maleUsersNumber}</Badge> | Female:{" "}
       <Badge style={femaleUsersStyle}>{femaleUsersNumber}</Badge>
-    </div>
+    </small>
   );
 };
 
