@@ -4,6 +4,7 @@ import {
   FormEventHandler,
   MouseEventHandler,
   useEffect,
+  useRef,
 } from "react";
 import Head from "next/head";
 import Layout from "../components/Layout";
@@ -32,6 +33,9 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
   const [profile, setProfile] = useState<UserType>();
   const [selection, setSelection] = useState(ALL_USERS);
   const [page, setPage] = useState(1);
+  const usersDataRef = useRef(results);
+
+  console.log(usersDataRef, usersDataRef.current);
 
   const paginate: MouseEventHandler<HTMLButtonElement> = async ({
     currentTarget: { textContent },
@@ -48,6 +52,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
         );
         setPage(next);
         setUsersData(() => nextPageData);
+        usersDataRef.current = nextPageData;
       } catch (e) {
         console.error(e);
       }
@@ -60,6 +65,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
         );
         setPage(prev);
         setUsersData(prevPageData);
+        usersDataRef.current = prevPageData;
       } catch (e) {
         console.error(e);
       }
@@ -102,7 +108,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
         last.toLowerCase() == value.toLowerCase()
     );
     filter.length && setUsersData(filter);
-    !value && setUsersData(results);
+    !value && setUsersData(usersDataRef.current);
   };
 
   const renderProfile = (id: string) => {
