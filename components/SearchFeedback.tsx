@@ -3,7 +3,7 @@ import { Badge } from "react-bootstrap";
 import { constantVariable } from "../config";
 import type { UserType } from "../interfaces";
 
-type SearchFeedbackProps = { latestUsers: MutableRefObject<UserType[]> };
+type SearchFeedbackProps = { latestUsers: UserType[] };
 
 const SearchFeedback = ({ latestUsers }: SearchFeedbackProps) => {
   const {
@@ -11,11 +11,11 @@ const SearchFeedback = ({ latestUsers }: SearchFeedbackProps) => {
     FEMALE_USERS_ICON_BG_COLOR,
     MALE_USERS_ICON_BG_COLOR,
   } = constantVariable;
-  const allUsersNumber = latestUsers.current.length;
-  const maleUsersNumber = latestUsers.current.filter(
+  const allUsersNumber = latestUsers.length;
+  const maleUsersNumber = latestUsers.filter(
     ({ gender }) => gender == "male"
   ).length;
-  const femaleUsersNumber = latestUsers.current.filter(
+  const femaleUsersNumber = latestUsers.filter(
     ({ gender }) => gender == "female"
   ).length;
   const allUsersStyle: CSSProperties = {
@@ -28,7 +28,7 @@ const SearchFeedback = ({ latestUsers }: SearchFeedbackProps) => {
     backgroundColor: FEMALE_USERS_ICON_BG_COLOR,
   };
   return (
-    <div className="mb-3">
+    <div className="mb-3 text-center">
       Found: <Badge style={allUsersStyle}>{allUsersNumber}</Badge> | Male:{" "}
       <Badge style={maleUsersStyle}>{maleUsersNumber}</Badge> | Female:{" "}
       <Badge style={femaleUsersStyle}>{femaleUsersNumber}</Badge>
