@@ -11,7 +11,7 @@ import type { UserType } from "../interfaces";
 type MenuProps = {
   searchTerm: string;
   showProfile: boolean;
-  latestUsers: MutableRefObject<UserType[]>;
+  latestUsers: UserType[];
   sortUsers: MouseEventHandler<HTMLDivElement>;
   handleSearchInputChange: ChangeEventHandler<HTMLInputElement>;
   handleSubmit: FormEventHandler<HTMLFormElement>;
