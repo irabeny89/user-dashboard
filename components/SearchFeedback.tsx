@@ -14,10 +14,10 @@ const SearchFeedback = ({ latestUsers }: SearchFeedbackProps) => {
   const allUsersNumber = latestUsers.current.length;
   const maleUsersNumber = latestUsers.current.filter(
     ({ gender }) => gender == "male"
-  );
+  ).length;
   const femaleUsersNumber = latestUsers.current.filter(
     ({ gender }) => gender == "female"
-  );
+  ).length;
   const allUsersStyle: CSSProperties = {
     backgroundColor: ALL_USERS_ICON_BG_COLOR,
   };
@@ -28,8 +28,7 @@ const SearchFeedback = ({ latestUsers }: SearchFeedbackProps) => {
     backgroundColor: FEMALE_USERS_ICON_BG_COLOR,
   };
   return (
-    // <small>{`Found: ${allUsersNumber} | Male: ${maleUsersNumber} Female: ${femaleUsersNumber}`}</small>
-    <div>
+    <div className="mb-3">
       Found: <Badge style={allUsersStyle}>{allUsersNumber}</Badge> | Male:{" "}
       <Badge style={maleUsersStyle}>{maleUsersNumber}</Badge> | Female:{" "}
       <Badge style={femaleUsersStyle}>{femaleUsersNumber}</Badge>
