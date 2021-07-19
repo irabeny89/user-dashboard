@@ -13,7 +13,7 @@ Repository: [https://github.com/irabeny89/user-dashboard](https://github.com/ira
 
 Clone the repo and run `pnpm dev` to start the development server.
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Deploy it to the cloud with [Vercel](https://vercel.com/) ([Documentation](https://nextjs.org/docs/deployment)).
 
 ## Notes
 
