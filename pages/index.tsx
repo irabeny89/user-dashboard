@@ -33,9 +33,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
   const [profile, setProfile] = useState<UserType>();
   const [selection, setSelection] = useState(ALL_USERS);
   const [page, setPage] = useState(1);
-  const usersDataRef = useRef(results);
-
-  console.log(usersDataRef, usersDataRef.current);
+  const latestUsersDataRef = useRef(results);
 
   const paginate: MouseEventHandler<HTMLButtonElement> = async ({
     currentTarget: { textContent },
@@ -52,7 +50,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
         );
         setPage(next);
         setUsersData(() => nextPageData);
-        usersDataRef.current = nextPageData;
+        latestUsersDataRef.current = nextPageData;
       } catch (e) {
         console.error(e);
       }
@@ -65,7 +63,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
         );
         setPage(prev);
         setUsersData(prevPageData);
-        usersDataRef.current = prevPageData;
+        latestUsersDataRef.current = prevPageData;
       } catch (e) {
         console.error(e);
       }
@@ -90,7 +88,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
       // ALL_USERS
       default:
         setSelection(selected);
-        setUsersData(results);
+        setUsersData(latestUsersDataRef.current);
         break;
     }
   };
@@ -108,7 +106,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
         last.toLowerCase() == value.toLowerCase()
     );
     filter.length && setUsersData(filter);
-    !value && setUsersData(usersDataRef.current);
+    !value && setUsersData(latestUsersDataRef.current);
   };
 
   const renderProfile = (id: string) => {
@@ -130,6 +128,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
       </Head>
       <Layout>
         <Menu
+          latestUsers={latestUsersDataRef}
           showProfile={showProfile}
           searchTerm={searchTerm}
           handleSubmit={handleSubmit}
@@ -137,6 +136,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
           handleSearchInputChange={handleSearchInputChange}
         />
         <OutputPanel
+          page={page}
           selection={selection}
           users={usersData}
           showProfile={showProfile}
