@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { APIResponse } from "../interfaces";
 import { constantVariable } from "../config";
-import { fakeAPIResponse } from '../data'
+import { fakeAPIResponse } from "../data";
 
 const { FEMALE_USERS, MALE_USERS, BASE_URL, DEFAULT_QUERY, DOWNLOAD_FORMAT } =
   constantVariable;
@@ -24,10 +24,10 @@ export const query = async (uri = DEFAULT_QUERY): Promise<APIResponse> => {
 export const capitalize = (text: string) =>
   `${text[0].toUpperCase()}${text.slice(1)}`;
 
-export const getJSONLink = (selection: string) => {
-  const allUsersLink = `${BASE_URL}${DEFAULT_QUERY}&format=${DOWNLOAD_FORMAT}`;
-  const maleUsersLink = `${BASE_URL}${DEFAULT_QUERY}&gender=male&format=${DOWNLOAD_FORMAT}`;
-  const femaleUsersLink = `${BASE_URL}${DEFAULT_QUERY}&gender=female&format=${DOWNLOAD_FORMAT}`;
+export const getJSONLink = (selection: string, page: number) => {
+  const allUsersLink = `${BASE_URL}${DEFAULT_QUERY}&page=${page}&format=${DOWNLOAD_FORMAT}`;
+  const maleUsersLink = `${BASE_URL}${DEFAULT_QUERY}&page=${page}&gender=male&format=${DOWNLOAD_FORMAT}`;
+  const femaleUsersLink = `${BASE_URL}${DEFAULT_QUERY}&page=${page}&gender=female&format=${DOWNLOAD_FORMAT}`;
 
   switch (selection) {
     case MALE_USERS:
