@@ -74,8 +74,8 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
     currentTarget: { lastChild },
   }) => {
     const selected = lastChild?.textContent!;
-    const maleUsers = results.filter(({ gender }) => gender === "male");
-    const femaleUsers = results.filter(({ gender }) => gender === "female");
+    const maleUsers = latestUsersDataRef.current.filter(({ gender }) => gender === "male");
+    const femaleUsers = latestUsersDataRef.current.filter(({ gender }) => gender === "female");
     switch (selected) {
       case FEMALE_USERS:
         setSelection(selected);
@@ -128,7 +128,7 @@ const Home = ({ data: { results = [] } }: HomeProps) => {
       </Head>
       <Layout>
         <Menu
-          latestUsers={latestUsersDataRef}
+          latestUsers={usersData}
           showProfile={showProfile}
           searchTerm={searchTerm}
           handleSubmit={handleSubmit}
